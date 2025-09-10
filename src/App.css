@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.body {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #FF9A00;
+  margin: 0;
+
+  .paleta {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+
+    .afuera {
+      width: 120px;
+      height: 120px;
+      cursor: grab;
+      border: 2px solid black;
+      border-radius: 8px;
+      background-color: white;
+
+      &.usado {
+        opacity: 0.3;
+        background-color: rgb(255, 0, 0);
+        cursor: not-allowed;
+      }
+    }
+
+  }
+
+  .area {
+    position: relative;
+    width: 70%;
+    height: 400px;
+    background-color: #34bd2d;
+    border-radius: 12px;
+    border: black 2px solid;
+    overflow: hidden;
+
+    .dentro {
+      width: 80px;
+      height: 80px;
+      cursor: grab;
+      position: absolute;
+      transition: left 1s ease, top 1s ease;
+      /* más lento */
+    }
+
+    .dentro.chocando {
+      animation: impacto 0.5s ease;
+    }
+  }
+
+  .panelInformacion {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.709);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .panelInformacion-contenido {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+
+      width: 500px;
+      height: 300px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+    }
+
+    .panelInformacion-contenido input {
+      padding: 5px;
+      width: 50%;
+    }
+
+    .panelInformacion-contenido-choque {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .panelInformacion-contenido select {
+      padding: 5px;
+      width: 100%;
+      height: 30px;
+      text-align: center;
+    }
+
+    .panel-boton {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel-boton button {
+      width: 30%;
+      height: 40px;
+      border-radius: 20px;
+    }
+  }
+
+  .botonReproducir {
+    width: 30%;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+}
