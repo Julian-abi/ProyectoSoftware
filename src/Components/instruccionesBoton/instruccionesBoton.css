@@ -1,3 +1,38 @@
-button{
-    color: #ffffff;
+.botonInstrucciones {
+    color: white;
+    background-color: #1976d2;
+
+}
+
+.contenedorInstrucciones{
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    width: 100%;
+    justify-content: center;
+}
+
+.conte2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .imagen1 {
+        max-width: 600px;
+        max-height: 150px;
+    }
+
+    .imagen2 {
+        max-width: 600px;
+        max-height: 120px;
+    }
+
+    .imagen3{
+        max-width: 600px;
+        max-height: 200px;
+    }
+
+    .imagen4{
+        max-height: 80px;
+    }
 }

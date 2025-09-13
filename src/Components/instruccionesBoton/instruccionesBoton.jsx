@@ -5,15 +5,24 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './instruccionesBoton.css';
 
+//Imagenes
+import eleccion from '../../images/instrucciones/eleccion.png';
+import veloci from '../../images/instrucciones/veloci.png';
+import person from '../../images/instrucciones/person.png';
+import guar from '../../images/instrucciones/guar.png';
+import bien from '../../images/instrucciones/bien.png';
+import repe from '../../images/instrucciones/repe.png';
+
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 700,
-    height: 500,
+    width: 1200,
+    height: 600,
     bgcolor: 'background.paper',
     border: '2px solid #000',
+    borderRadius: '20px',
     boxShadow: 24,
     p: 4,
 };
@@ -27,9 +36,8 @@ const instruccionesBoton = () => {
         <>
             <div>
                 <Button onClick={handleOpen}
-                color='#ffffff'
-                variant="contained"
-                
+                    className='botonInstrucciones'
+                    variant="contained"
                 >Instrucciones</Button>
                 <Modal
                     open={open}
@@ -42,17 +50,42 @@ const instruccionesBoton = () => {
                             Instrucciones de juego
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            1. Arrastra los personaje con el mouse y suéltalo en la pista verde.
-                            <br />
-                            2. Presiona el personaje para darle velocidad.
-                            <br />
-                            3. Selecciona el personaje al cual quieres chocar.
-                            <br />
-                            4. Guarda los datos presionando el boton "Guardar"
-                            <br />
-                            5. Presiona el boton de reproducción para ver los choques.
-                            <br />
-                            6. Repite los pasos para más choques.
+                            <div className='contenedorInstrucciones'>
+                                <div>
+                                    <b>1.</b>Arrastra los personajes con el mouse y suéltalo en la pista verde.
+                                    <br />
+                                    <div className='conte2'>
+                                        <img className='imagen1' src={eleccion} alt="elegir" />
+                                    </div>
+                                    <br />
+                                    <b>2.</b> Presiona el personaje para darle velocidad.
+                                    <br />
+                                    <div className='conte2'>
+                                        <img className='imagen2' src={veloci} alt="velocidad" />
+                                    </div>
+                                    <br />
+                                    <b>3.</b> Selecciona el personaje al cual quieres chocar.
+                                    <div className='conte2'>
+                                        <img className='imagen2' src={person} alt="velocidad" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <b>4.</b> Guarda los datos presionando el boton "Guardar"
+                                    <div className='conte2'>
+                                        <img className='imagen3' src={guar} alt="velocidad" />
+                                    </div>
+                                    <br />
+                                    <b>5.</b> Presiona el boton de "Iniciar" para ver los choques.
+                                    <div className='conte2'>
+                                        <img className='imagen2' src={bien} alt="velocidad" />
+                                    </div>
+                                    <br />
+                                    <b>6.</b> Repite los pasos para más choques.
+                                    <div className='conte2'>
+                                        <img className='imagen4' src={repe} alt="velocidad" />
+                                    </div>
+                                </div>
+                            </div>
                         </Typography>
                     </Box>
                 </Modal>

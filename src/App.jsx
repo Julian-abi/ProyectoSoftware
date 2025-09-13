@@ -237,7 +237,6 @@ const escenarioCarros = () => {
               />
             ))}
           </div>
-
           {/* Pantalla de información */}
           {personajeSeleccionado && (
             <div className="panelInformacion">
@@ -317,7 +316,9 @@ const escenarioCarros = () => {
           <p>
             Modulo de aprendizaje sobre el momento lineal y su conservación.
           </p>
-          <div>
+          <div className="instrucciones">
+            <InstruccionesBoton />
+            <InstruccionesBoton />
             <InstruccionesBoton />
           </div>
         </div>
