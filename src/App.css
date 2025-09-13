@@ -8,119 +8,152 @@
 .body {
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
   background-color: #FF9A00;
-  margin: 0;
 
-  .paleta {
+  .body-principal {
     display: flex;
-    gap: 40px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    border-radius: 12px;
 
-    .afuera {
-      width: 120px;
-      height: 120px;
-      cursor: grab;
-      border: 2px solid black;
-      border-radius: 8px;
-      background-color: white;
-
-      &.usado {
-        opacity: 0.3;
-        background-color: rgb(255, 0, 0);
-        cursor: not-allowed;
+    .paleta {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+  
+      .personaje{
+        display: flex;
+        flex-direction: column;
+  
+        .nombrePersonaje{
+          margin-top: 5px;
+          text-align: center;
+          font-size: 18px;
+        }
+      }
+  
+      .afuera {
+        width: 120px;
+        height: 120px;
+        cursor: grab;
+        border: 2px solid black;
+        border-radius: 8px;
+        background-color: white;
+  
+        &.usado {
+          opacity: 0.3;
+          background-color: rgb(255, 0, 0);
+          cursor: not-allowed;
+        }
+      }
+  
+    }
+  
+    .area {
+      position: relative;
+      width: 85%;
+      height: 400px;
+      background-color: #34bd2d;
+      border-radius: 12px;
+      border: black 2px solid;
+      overflow: hidden;
+  
+      .dentro {
+        width: 80px;
+        height: 80px;
+        cursor: grab;
+        position: absolute;
+        transition: left 1s ease, top 1s ease;
+        /* más lento */
+      }
+  
+      .dentro.chocando {
+        animation: impacto 0.5s ease;
       }
     }
-
-  }
-
-  .area {
-    position: relative;
-    width: 70%;
-    height: 400px;
-    background-color: #34bd2d;
-    border-radius: 12px;
-    border: black 2px solid;
-    overflow: hidden;
-
-    .dentro {
-      width: 80px;
-      height: 80px;
-      cursor: grab;
-      position: absolute;
-      transition: left 1s ease, top 1s ease;
-      /* más lento */
-    }
-
-    .dentro.chocando {
-      animation: impacto 0.5s ease;
-    }
-  }
-
-  .panelInformacion {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.709);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .panelInformacion-contenido {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-
-      width: 500px;
-      height: 300px;
-      text-align: center;
-
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-
-    }
-
-    .panelInformacion-contenido input {
-      padding: 5px;
-      width: 50%;
-    }
-
-    .panelInformacion-contenido-choque {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .panelInformacion-contenido select {
-      padding: 5px;
+  
+    .panelInformacion {
+      position: fixed;
       width: 100%;
-      height: 30px;
-      text-align: center;
-    }
-
-    .panel-boton {
+      height: 100%;
+      background: rgba(0, 0, 0, 0.709);
       display: flex;
-      gap: 20px;
       justify-content: center;
       align-items: center;
+  
+      .panelInformacion-contenido {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+  
+        width: 500px;
+        height: 300px;
+        text-align: center;
+  
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+  
+      }
+  
+      .panelInformacion-contenido input {
+        padding: 5px;
+        width: 50%;
+      }
+  
+      .panelInformacion-contenido-choque {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+  
+      .panelInformacion-contenido select {
+        padding: 5px;
+        width: 100%;
+        height: 30px;
+        text-align: center;
+      }
+  
+      .panel-boton {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .panel-boton button {
+        width: 30%;
+        height: 40px;
+        border-radius: 20px;
+      }
     }
-
-    .panel-boton button {
+  
+    .botonReproducir {
       width: 30%;
       height: 40px;
       border-radius: 20px;
+      margin-top: 10px;
     }
   }
 
-  .botonReproducir {
-    width: 30%;
-    height: 40px;
+  .body-secundario {
+    width: 18%;
+    height: 90%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
     border-radius: 20px;
-    margin-top: 10px;
+    gap: 10px;
+    border: black 2px solid;
   }
+
 }

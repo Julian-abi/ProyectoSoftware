@@ -9,7 +9,8 @@ import pupi from "./images/carros/4.png";
 import candelabra from "./images/carros/5.png";
 import varsos from "./images/carros/6.png";
 
-import historialModal from "./historialModal/historialModal.jsx";
+//Componentes
+import InstruccionesBoton from "./Components/instruccionesBoton/instruccionesBoton";
 
 const escenarioCarros = () => {
 
@@ -157,10 +158,10 @@ const escenarioCarros = () => {
       if (dx > dy) {
         // a pegar al lado
         if (personajeA.x < personajeB.x) {
-          nuevaX = personajeB.x - distanciaMinima; 
+          nuevaX = personajeB.x - distanciaMinima;
           // a la izquierda
         } else {
-          nuevaX = personajeB.x + distanciaMinima; 
+          nuevaX = personajeB.x + distanciaMinima;
           // a la derecha
         }
         nuevaY = personajeB.y;
@@ -168,10 +169,10 @@ const escenarioCarros = () => {
         // pega arriba o abajo
         if (personajeA.y < personajeB.y) {
 
-          nuevaY = personajeB.y - distanciaMinima; 
+          nuevaY = personajeB.y - distanciaMinima;
           // arriba
         } else {
-          nuevaY = personajeB.y + distanciaMinima; 
+          nuevaY = personajeB.y + distanciaMinima;
           // abajo
         }
         nuevaX = personajeB.x;
@@ -189,97 +190,107 @@ const escenarioCarros = () => {
   };
 
   return (
-    <div className="body">
-      <div className="paleta">
-        {/*Tabla de personajes*/}
-        {personajes.map((p) => (
-          <img
-            key={p.id}
-            src={p.img}
-            alt={`personaje-${p.id}`}
-            draggable={!p.usado}
-            onDragStart={(e) => handleDragStart(e, p, false)}
-            className={`afuera ${p.usado ? "usado" : ""}`}
-          />
-        ))
-        }
-      </div>
+    <>
+      <div className="body">
+        <div className="body-principal">
+          <div className="paleta">
+            {/*Tabla de personajes*/}
+            {personajes.map((p) => (
 
-      {/* Tablero */}
+              <>
+                <div className="personaje">
+                  <img
+                    key={p.id}
+                    src={p.img}
+                    alt={`personaje-${p.id}`}
+                    draggable={!p.usado}
+                    onDragStart={(e) => handleDragStart(e, p, false)}
+                    className={`afuera ${p.usado ? "usado" : ""}`} />
+                  <div className="nombrePersonaje">
+                    <b>{p.nombre}</b> <br />
+                  </div>
+                </div>
+              </>
+            ))
 
-      <div
-        ref={posicionTablero}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-        className="area"
-      >
-        {personajesTablero.map((p) => (
-          <img
-            key={p.id}
-            src={p.img}
-            alt={`personaje-${p.id}`}
-            draggable
-            onDragStart={(e) => handleDragStart(e, p, true)}
-            className="dentro"
-            onClick={() => setPersonajeSeleccionado(p)}
-            style={{ left: p.x, top: p.y }}
-          />
-        ))}
-      </div>
-
-      {/* Pantalla de información */}
-      {personajeSeleccionado && (
-        <div className="panelInformacion">
-          <div className="panelInformacion-contenido">
-            <h2>Choque de personajes</h2>
-            <p>
-              <b>Seleccionado:</b> {personajeSeleccionado.nombre}
-            </p>
-            <p>
-              <b>Masa:</b> {personajeSeleccionado.masa} kg
-            </p>
-
-            <label>
-              <b>Velocidad:</b>{" "}
-              <input
-                type="number"
-                value={velocidad}
-                onChange={(e) => setVelocidad(e.target.value)}
-                placeholder="Ingrese la velocidad"
-              />
-            </label>
-
-            <label className="panelInformacion-contenido-choque">
-              Personaje de Choque:
-              <select
-                value={personajeChoque ? personajeChoque.id : ""}
-                onChange={(e) => {
-                  const elegido = personajesTablero.find(
-                    (p) => p.id === Number(e.target.value)
-                  );
-                  setPersonajeChoque(elegido);
-                }}
-              >
-                <option value="" >Seleccionar</option>
-                {personajesTablero
-                  .filter((p) => p.id !== personajeSeleccionado.id)
-                  .map((p) => (
-                    <option key={p.id} value={p.id}>
-                      {p.nombre} (Masa {p.masa} kg)
-                    </option>
-                  ))}
-              </select>
-            </label>
-
-            <div className="panel-boton">
-              <button onClick={() => setPersonajeSeleccionado(null)}>Cerrar</button>
-              <button onClick={handleGuardarChoque}>Guardar</button>
-            </div>
+            }
           </div>
-        </div>
-      )}
-      <button className="botonReproducir" onClick={ejecutarChoques}>Iniciar choque</button>
-      {/* Historial de choques 
+
+          {/* Tablero */}
+
+          <div
+            ref={posicionTablero}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            className="area"
+          >
+            {personajesTablero.map((p) => (
+              <img
+                key={p.id}
+                src={p.img}
+                alt={`personaje-${p.id}`}
+                draggable
+                onDragStart={(e) => handleDragStart(e, p, true)}
+                className="dentro"
+                onClick={() => setPersonajeSeleccionado(p)}
+                style={{ left: p.x, top: p.y }}
+              />
+            ))}
+          </div>
+
+          {/* Pantalla de información */}
+          {personajeSeleccionado && (
+            <div className="panelInformacion">
+              <div className="panelInformacion-contenido">
+                <h2>Choque de personajes</h2>
+                <p>
+                  <b>Seleccionado:</b> {personajeSeleccionado.nombre}
+                </p>
+                <p>
+                  <b>Masa:</b> {personajeSeleccionado.masa} kg
+                </p>
+
+                <label>
+                  <b>Velocidad:</b>{" "}
+                  <input
+                    type="number"
+                    value={velocidad}
+                    onChange={(e) => setVelocidad(e.target.value)}
+                    placeholder="Ingrese la velocidad"
+                  />
+                </label>
+
+                <label className="panelInformacion-contenido-choque">
+                  Personaje de Choque:
+                  <select
+                    value={personajeChoque ? personajeChoque.id : ""}
+                    onChange={(e) => {
+                      const elegido = personajesTablero.find(
+                        (p) => p.id === Number(e.target.value)
+                      );
+                      setPersonajeChoque(elegido);
+                    }}
+                  >
+                    <option value="" >Seleccionar</option>
+                    {personajesTablero
+                      .filter((p) => p.id !== personajeSeleccionado.id)
+                      .map((p) => (
+                        <option key={p.id} value={p.id}>
+                          {p.nombre} (Masa {p.masa} kg)
+                        </option>
+                      ))}
+                  </select>
+                </label>
+
+                <div className="panel-boton">
+                  <button onClick={() => setPersonajeSeleccionado(null)}>Cerrar</button>
+                  <button onClick={handleGuardarChoque}>Guardar</button>
+                </div>
+              </div>
+            </div>
+          )}
+          <button className="botonReproducir" onClick={ejecutarChoques}>Iniciar choque</button>
+          {/* Historial de choques 
       <div className="historial">
         <h3>Historial de choques</h3>
         {historialChoques.length === 0 ? (
@@ -298,7 +309,20 @@ const escenarioCarros = () => {
       </div>
       */}
 
-    </div>
+        </div>
+        <div className="body-secundario">
+          <h1>
+            Carros Chocones
+          </h1>
+          <p>
+            Modulo de aprendizaje sobre el momento lineal y su conservación.
+          </p>
+          <div>
+            <InstruccionesBoton />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
